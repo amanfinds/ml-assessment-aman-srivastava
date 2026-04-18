@@ -83,10 +83,6 @@ To build the modelling dataset, the four tables (transactions, store attributes,
   - Average basket size
   - Number of transactions (footfall proxy)
 
-- **Why This Approach**:
-  Aggregating at the store-date level aligns with the business problem, which is to decide which promotion to run in each store each month/day to maximise sales.
-
-
 ### B2(b) Exploratory Data Analysis (EDA)
 
 Before building the model, the following analyses would be performed:
@@ -116,9 +112,6 @@ Before building the model, the following analyses would be performed:
    - Insight: Understand regional differences  
    - Impact: Supports segmentation or interaction features  
 
-Overall, EDA helps uncover patterns, validate assumptions, and guide feature engineering and model selection.
-
-
 ### B2(c) Handling Promotion Imbalance
 
 If 80% of transactions occur without any promotion, the dataset is highly imbalanced.
@@ -145,11 +138,7 @@ Since the data is time-ordered (monthly store-level data over three years), the 
   - Use the first ~80% of the timeline (earlier months) as the training set
   - Use the most recent ~20% (latest months) as the test set
   - Optionally, use rolling/forward validation for robustness
-
-- **Why Random Split is Inappropriate**:
-  A random split can cause **data leakage**, where future information is used to predict past outcomes. This leads to overly optimistic performance and does not reflect real-world usage, where predictions are made on unseen future data.
-
-- **Evaluation Metrics**:
+ **Evaluation Metrics**:
   1. **RMSE (Root Mean Squared Error)**  
      - Measures average prediction error with higher penalty for large errors  
      - Useful for identifying large mistakes in sales prediction  
@@ -195,7 +184,6 @@ To deploy the model for monthly recommendations, the following process can be us
 
 - **1. Model Saving**:
   - Save the trained pipeline (including preprocessing and model) using tools like `joblib` or `pickle`
-  - Example: `joblib.dump(model, 'model.pkl')`
 
 - **2. Data Preparation (Monthly)**:
   - Collect new data for each store (store attributes, calendar info, promotion options)
@@ -217,4 +205,3 @@ To deploy the model for monthly recommendations, the following process can be us
   - Retrain the model periodically (e.g., every quarter) or when performance degrades significantly
   - Incorporate new data to keep the model updated with recent trends
 
-This ensures the model remains accurate, reliable, and aligned with evolving business conditions.
