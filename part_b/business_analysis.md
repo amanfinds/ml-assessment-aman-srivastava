@@ -18,7 +18,7 @@ The objective is to predict the number of items sold for a given store under a s
 - **Justification**:  
   The goal is to estimate a numerical outcome (sales volume) based on historical data. Regression models are appropriate for predicting continuous values and can capture relationships between promotional strategies and sales performance.
 
-  ### B1(b) Why Items Sold is a Better Target than Revenue
+ ### B1(b) Why Items Sold is a Better Target than Revenue
 
 Using **items sold (sales volume)** as the target variable is more reliable than total revenue because revenue can be heavily influenced by pricing strategies, discounts, and product mix.
 
